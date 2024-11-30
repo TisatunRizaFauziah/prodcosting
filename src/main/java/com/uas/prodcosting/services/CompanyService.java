@@ -20,24 +20,17 @@ public class CompanyService {
 
     public Company saveCompany(Company company) {
         // Hitung biaya berdasarkan persentase penyelesaian
-        Long biayaBahanBakuSelesai = company.getBiayaBahanBaku() * 
-            company.getPersentaseBahanBaku() / 100;
-            
-        Long biayaBahanPenolongSelesai = company.getBiayaBahanPenolong() * 
-            company.getPersentaseBahanPenolong() / 100;
-            
-        Long biayaTenagaKerjaSelesai = company.getBiayaTenagaKerja() * 
-            company.getPersentaseTenagaKerja() / 100;
-            
-        Long bopSelesai = company.getBop() * 
-            company.getPersentaseBop() / 100;
+        Long biayaBahanBakuSelesai = company.getBiayaBahanBaku();
+        Long biayaBahanPenolongSelesai = company.getBiayaBahanPenolong();
+        Long biayaTenagaKerjaSelesai = company.getBiayaTenagaKerja();
+        Long bopSelesai = company.getBop();
 
         // Hitung total biaya produksi
         Long totalBiaya = biayaBahanBakuSelesai + 
-                         biayaBahanPenolongSelesai + 
-                         biayaTenagaKerjaSelesai + 
-                         bopSelesai;
-                           
+                          biayaBahanPenolongSelesai + 
+                          biayaTenagaKerjaSelesai + 
+                          bopSelesai;
+
         company.setTotalBiayaProduksi(totalBiaya);
         return companyRepository.save(company);
     }

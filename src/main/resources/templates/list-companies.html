@@ -357,8 +357,8 @@
 
                 <!-- Buttons -->
                 <div class="mt-3">
-                    <a th:href="@{/companies/edit/{id}(id=${company.id})}" class="btn btn-warning">Edit</a>
-                    <a th:href="@{/companies/delete/{id}(id=${company.id})}" 
+                    <a th:href="@{/edit/{id}(id=${company.id})}" class="btn btn-warning">Edit</a>
+                    <a th:href="@{/delete/{id}(id=${company.id})}" 
                        class="btn btn-danger"
                        onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                 </div>

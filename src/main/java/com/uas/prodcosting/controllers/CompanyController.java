@@ -36,7 +36,7 @@ public class CompanyController {
     public String editForm(@PathVariable Long id, Model model) {
         Company company = companyService.getCompanyById(id);
         model.addAttribute("company", company);
-        return "company/form";
+        return "update-companies";
     }
 
     @GetMapping("/delete/{id}")
@@ -44,4 +44,6 @@ public class CompanyController {
         companyService.deleteCompany(id);
         return "redirect:/companies";
     }
+
+   
 }

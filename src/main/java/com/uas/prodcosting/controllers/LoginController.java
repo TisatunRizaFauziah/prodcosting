@@ -58,7 +58,7 @@ public class LoginController {
         Login login = loginService.login(username, password);
         if (login != null) {
             model.addAttribute("login", login);
-            return "list-companies";
+            return "home";
         } else {
             return "redirect:/login";
         }
