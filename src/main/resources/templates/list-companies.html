@@ -9,69 +9,52 @@
             border-radius: 8px;
             margin-bottom: 20px;
             background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
+
         .company-header {
             padding: 15px 20px;
             background-color: #f8f9fa;
             border-radius: 8px 8px 0 0;
             cursor: pointer;
         }
+
         .company-details {
             display: none;
             padding: 20px;
         }
+
         .company-details.show {
             display: block;
         }
+
         .info-box {
             background-color: #f8f9fa;
             padding: 15px;
             border-radius: 6px;
             margin-bottom: 15px;
         }
+
         .info-label {
             color: #6c757d;
             font-size: 0.9rem;
             margin-bottom: 5px;
         }
+
         .info-value {
             font-size: 1.1rem;
             font-weight: 500;
         }
-        .calculation-steps {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        .formula {
-            color: #0d6efd;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #dee2e6;
-            padding-bottom: 10px;
-        }
-        .calculation-detail {
-            margin-bottom: 15px;
-        }
-        .calculation-detail p {
-            margin-bottom: 5px;
-            font-family: monospace;
-        }
-        .calculation-result {
-            font-weight: bold;
-        }
-        .result {
-            color: #198754;
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-        .table th, .table td {
+
+        .table th,
+        .table td {
             vertical-align: middle;
         }
+
         .text-end {
             text-align: right;
         }
+
         .table-responsive {
             overflow-x: auto;
         }
@@ -167,196 +150,10 @@
                     </div>
                 </div>
 
-                <!-- Perhitungan Unit Ekuivalensi -->
-                <div class="info-box mb-4">
-                    <h6>Perhitungan Unit Ekuivalensi</h6>
-                    <div class="row">
-                        <!-- Bahan Baku -->
-                        <div class="col-12 mb-3">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Biaya Bahan Baku</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="calculation-steps">
-                                        <p class="formula">Rumus: Produk Jadi + (Produk Dalam Proses × % Bahan Baku)</p>
-                                        <div class="calculation-detail">
-                                            <p>Biaya Bahan Baku = <span th:text="${#numbers.formatDecimal(company.biayaBahanBaku, 0, 'COMMA', 0, 'POINT')}"></span></p>
-                                            <p>Produk Jadi = <span th:text="${company.produkJadi}"></span></p>
-                                            <p>Produk Dalam Proses = <span th:text="${company.produkDalamProses}"></span></p>
-                                            <p>Persentase = <span th:text="${company.persentaseBahanBaku + '%'}"></span></p>
-                                        </div>
-                                        <div class="calculation-result">
-                                            <p>= <span th:text="${company.produkJadi}"></span> + 
-                                               (<span th:text="${company.produkDalamProses}"></span> × 
-                                               <span th:text="${company.persentaseBahanBaku + '%'}"></span>)</p>
-                                            <div class="result" th:attr="data-produk-jadi=${company.produkJadi}, 
-                                                                data-produk-proses=${company.produkDalamProses},
-                                                                data-persentase=${company.persentaseBahanBaku},
-                                                                data-biaya=${company.biayaBahanBaku},
-                                                                id='ekuivalensiBB' + ${company.id}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bahan Penolong -->
-                        <div class="col-12 mb-3">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Biaya Bahan Penolong</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="calculation-steps">
-                                        <p class="formula">Rumus: Produk Jadi + (Produk Dalam Proses × % Bahan Penolong)</p>
-                                        <div class="calculation-detail">
-                                            <p>Biaya Bahan Penolong = <span th:text="${#numbers.formatDecimal(company.biayaBahanPenolong, 0, 'COMMA', 0, 'POINT')}"></span></p>
-                                            <p>Produk Jadi = <span th:text="${company.produkJadi}"></span></p>
-                                            <p>Produk Dalam Proses = <span th:text="${company.produkDalamProses}"></span></p>
-                                            <p>Persentase = <span th:text="${company.persentaseBahanPenolong + '%'}"></span></p>
-                                        </div>
-                                        <div class="calculation-result">
-                                            <p>= <span th:text="${company.produkJadi}"></span> + 
-                                               (<span th:text="${company.produkDalamProses}"></span> × 
-                                               <span th:text="${company.persentaseBahanPenolong + '%'}"></span>)</p>
-                                            <div class="result" th:attr="data-produk-jadi=${company.produkJadi}, 
-                                                                data-produk-proses=${company.produkDalamProses},
-                                                                data-persentase=${company.persentaseBahanPenolong},
-                                                                data-biaya=${company.biayaBahanPenolong},
-                                                                id='ekuivalensiBP' + ${company.id}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tenaga Kerja -->
-                        <div class="col-12 mb-3">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Biaya Tenaga Kerja</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="calculation-steps">
-                                        <p class="formula">Rumus: Produk Jadi + (Produk Dalam Proses × % Tenaga Kerja)</p>
-                                        <div class="calculation-detail">
-                                            <p>Biaya Tenaga Kerja = <span th:text="${#numbers.formatDecimal(company.biayaTenagaKerja, 0, 'COMMA', 0, 'POINT')}"></span></p>
-                                            <p>Produk Jadi = <span th:text="${company.produkJadi}"></span></p>
-                                            <p>Produk Dalam Proses = <span th:text="${company.produkDalamProses}"></span></p>
-                                            <p>Persentase = <span th:text="${company.persentaseTenagaKerja + '%'}"></span></p>
-                                        </div>
-                                        <div class="calculation-result">
-                                            <p>= <span th:text="${company.produkJadi}"></span> + 
-                                               (<span th:text="${company.produkDalamProses}"></span> × 
-                                               <span th:text="${company.persentaseTenagaKerja + '%'}"></span>)</p>
-                                            <div class="result" th:attr="data-produk-jadi=${company.produkJadi}, 
-                                                                data-produk-proses=${company.produkDalamProses},
-                                                                data-persentase=${company.persentaseTenagaKerja},
-                                                                data-biaya=${company.biayaTenagaKerja},
-                                                                id='ekuivalensiTK' + ${company.id}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- BOP -->
-                        <div class="col-12 mb-3">
-                            <div class="card">
-                                <div class="card-header bg-light">
-                                    <h6 class="mb-0">Biaya Overhead Pabrik (BOP)</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="calculation-steps">
-                                        <p class="formula">Rumus: Produk Jadi + (Produk Dalam Proses × % BOP)</p>
-                                        <div class="calculation-detail">
-                                            <p>Biaya BOP = <span th:text="${#numbers.formatDecimal(company.bop, 0, 'COMMA', 0, 'POINT')}"></span></p>
-                                            <p>Produk Jadi = <span th:text="${company.produkJadi}"></span></p>
-                                            <p>Produk Dalam Proses = <span th:text="${company.produkDalamProses}"></span></p>
-                                            <p>Persentase = <span th:text="${company.persentaseBop + '%'}"></span></p>
-                                        </div>
-                                        <div class="calculation-result">
-                                            <p>= <span th:text="${company.produkJadi}"></span> + 
-                                               (<span th:text="${company.produkDalamProses}"></span> × 
-                                               <span th:text="${company.persentaseBop + '%'}"></span>)</p>
-                                            <div class="result" th:attr="data-produk-jadi=${company.produkJadi}, 
-                                                                data-produk-proses=${company.produkDalamProses},
-                                                                data-persentase=${company.persentaseBop},
-                                                                data-biaya=${company.bop},
-                                                                id='ekuivalensiBOP' + ${company.id}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Perhitungan Tahap 2: Harga Pokok Produk per Unit -->
-                <div class="info-box mb-4">
-                    <h6>Harga Pokok Produk per Unit Barang Jadi</h6>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Unsur Biaya Produksi</th>
-                                            <th>Total Biaya (Rp)</th>
-                                            <th>Unit Ekuivalensi (Kg)</th>
-                                            <th>Biaya Produksi per Unit (Rp)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Bahan Baku -->
-                                        <tr>
-                                            <td>Biaya Bahan Baku</td>
-                                            <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaBahanBaku, 0, 'COMMA', 0, 'POINT')}"></td>
-                                            <td class="text-end unit-ekuivalensi-bb"></td>
-                                            <td class="text-end biaya-per-unit-bb"></td>
-                                        </tr>
-                                        <!-- Bahan Penolong -->
-                                        <tr>
-                                            <td>Biaya Bahan Penolong</td>
-                                            <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaBahanPenolong, 0, 'COMMA', 0, 'POINT')}"></td>
-                                            <td class="text-end unit-ekuivalensi-bp"></td>
-                                            <td class="text-end biaya-per-unit-bp"></td>
-                                        </tr>
-                                        <!-- Tenaga Kerja -->
-                                        <tr>
-                                            <td>Biaya Tenaga Kerja</td>
-                                            <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaTenagaKerja, 0, 'COMMA', 0, 'POINT')}"></td>
-                                            <td class="text-end unit-ekuivalensi-tk"></td>
-                                            <td class="text-end biaya-per-unit-tk"></td>
-                                        </tr>
-                                        <!-- BOP -->
-                                        <tr>
-                                            <td>BOP</td>
-                                            <td class="text-end" th:text="${#numbers.formatDecimal(company.bop, 0, 'COMMA', 0, 'POINT')}"></td>
-                                            <td class="text-end unit-ekuivalensi-bop"></td>
-                                            <td class="text-end biaya-per-unit-bop"></td>
-                                        </tr>
-                                        <!-- Total -->
-                                        <tr class="table-light fw-bold">
-                                            <td>Total</td>
-                                            <td class="text-end total-biaya"></td>
-                                            <td></td>
-                                            <td class="text-end total-biaya-per-unit"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Buttons -->
                 <div class="mt-3">
+                    <a th:href="@{/ekuivalensi/{id}(id=${company.id})}" class="btn btn-info">Perhitungan Unit Ekuivalensi</a>
+                    <a th:href="@{/hpppbj/{id}(id=${company.id})}" class="btn btn-primary">Harga Pokok Perunit</a>
                     <a th:href="@{/edit/{id}(id=${company.id})}" class="btn btn-warning">Edit</a>
                     <a th:href="@{/delete/{id}(id=${company.id})}" 
                        class="btn btn-danger"
@@ -370,75 +167,6 @@
         function toggleDetails(id) {
             const detailsElement = document.getElementById('details-' + id);
             detailsElement.classList.toggle('show');
-            if(detailsElement.classList.contains('show')) {
-                hitungUnitEkuivalensi(id);
-                setTimeout(() => {
-                    hitungHargaPokokPerUnit(id);
-                }, 100);
-            }
-        }
-
-        function hitungUnitEkuivalensi(id) {
-            function hitungEkuivalensi(produkJadi, produkProses, persentase) {
-                return produkJadi + (produkProses * (persentase / 100));
-            }
-
-            function formatNumber(num) {
-                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            }
-
-            ['BB', 'BP', 'TK', 'BOP'].forEach(type => {
-                const element = document.getElementById(`ekuivalensi${type}${id}`);
-                const result = hitungEkuivalensi(
-                    parseInt(element.dataset.produkJadi),
-                    parseInt(element.dataset.produkProses),
-                    parseInt(element.dataset.persentase)
-                );
-                element.textContent = `= ${formatNumber(result)} Kg`;
-            });
-        }
-
-        function hitungHargaPokokPerUnit(id) {
-            function formatCurrency(num) {
-                return new Intl.NumberFormat('id-ID').format(num);
-            }
-
-            // Ambil hasil unit ekuivalensi dari perhitungan sebelumnya
-            const unitEkuivalensiBB = parseFloat(document.getElementById(`ekuivalensiBB${id}`).textContent.replace(/[^\d]/g, ''));
-            const unitEkuivalensiBP = parseFloat(document.getElementById(`ekuivalensiBP${id}`).textContent.replace(/[^\d]/g, ''));
-            const unitEkuivalensiTK = parseFloat(document.getElementById(`ekuivalensiTK${id}`).textContent.replace(/[^\d]/g, ''));
-            const unitEkuivalensiBOP = parseFloat(document.getElementById(`ekuivalensiBOP${id}`).textContent.replace(/[^\d]/g, ''));
-
-            // Ambil biaya dari data attributes
-            const biayaBB = parseFloat(document.querySelector(`[data-biaya-bb="${id}"]`).value);
-            const biayaBP = parseFloat(document.querySelector(`[data-biaya-bp="${id}"]`).value);
-            const biayaTK = parseFloat(document.querySelector(`[data-biaya-tk="${id}"]`).value);
-            const biayaBOP = parseFloat(document.querySelector(`[data-biaya-bop="${id}"]`).value);
-
-            // Hitung biaya per unit
-            const biayaPerUnitBB = Math.round(biayaBB / unitEkuivalensiBB);
-            const biayaPerUnitBP = Math.round(biayaBP / unitEkuivalensiBP);
-            const biayaPerUnitTK = Math.round(biayaTK / unitEkuivalensiTK);
-            const biayaPerUnitBOP = Math.round(biayaBOP / unitEkuivalensiBOP);
-
-            // Tampilkan unit ekuivalensi
-            document.querySelector('.unit-ekuivalensi-bb').textContent = formatCurrency(unitEkuivalensiBB);
-            document.querySelector('.unit-ekuivalensi-bp').textContent = formatCurrency(unitEkuivalensiBP);
-            document.querySelector('.unit-ekuivalensi-tk').textContent = formatCurrency(unitEkuivalensiTK);
-            document.querySelector('.unit-ekuivalensi-bop').textContent = formatCurrency(unitEkuivalensiBOP);
-
-            // Tampilkan biaya per unit
-            document.querySelector('.biaya-per-unit-bb').textContent = formatCurrency(biayaPerUnitBB);
-            document.querySelector('.biaya-per-unit-bp').textContent = formatCurrency(biayaPerUnitBP);
-            document.querySelector('.biaya-per-unit-tk').textContent = formatCurrency(biayaPerUnitTK);
-            document.querySelector('.biaya-per-unit-bop').textContent = formatCurrency(biayaPerUnitBOP);
-
-            // Hitung dan tampilkan total
-            const totalBiaya = biayaBB + biayaBP + biayaTK + biayaBOP;
-            const totalBiayaPerUnit = biayaPerUnitBB + biayaPerUnitBP + biayaPerUnitTK + biayaPerUnitBOP;
-
-            document.querySelector('.total-biaya').textContent = formatCurrency(totalBiaya);
-            document.querySelector('.total-biaya-per-unit').textContent = formatCurrency(totalBiayaPerUnit);
         }
     </script>
 

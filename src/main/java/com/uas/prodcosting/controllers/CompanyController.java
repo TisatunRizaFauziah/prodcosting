@@ -2,24 +2,41 @@ package com.uas.prodcosting.controllers;
 
 import com.uas.prodcosting.models.Company;
 import com.uas.prodcosting.services.CompanyService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-// @RequestMapping("/companies")
 public class CompanyController {
 
     @Autowired
     private CompanyService companyService;
 
     @GetMapping("/companies")
-    public String listCompanies(Model model) {
-        model.addAttribute("companies", companyService.getAllCompanies());
-        return "list-companies";
+   public String listCompanies(Model model) {
+       List<Company> companies = companyService.getAllCompanies();
+       model.addAttribute("companies", companies);
+       return "list-companies";
+   }
+    @GetMapping("/ekuivalensi/{id}")
+    public String ekuivalensi(@PathVariable Long id,Model model)
+    {
+        return companyService.unitEkuivalensi(id,model);
     }
-
+    @GetMapping("/hpppbj/{id}")
+    public String hppPerunit(@PathVariable Long id,Model model)
+    {
+        return companyService.hppPerunitBj(id,model);
+    }
+    @GetMapping("/hppj/{id}")
+    public String hppJadiBdp(@PathVariable Long id,Model model)
+    {
+        return companyService.hppJadi(id,model);
+    }
     @GetMapping("/add-companies")
     public String createForm(Model model) {
         model.addAttribute("company", new Company());
