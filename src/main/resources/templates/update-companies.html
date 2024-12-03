@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-body">
                 <h2 class="card-title mb-4">Edit Perusahaan</h2>
-                <form th:action="@{/update/{id}}" th:object="${company}" method="post">
+                <form th:action="@{/save}" th:object="${company}" method="post">
                     <!-- Informasi Umum -->
                     <div class="row mb-4">
                         <div class="col-md-6 mb-3">

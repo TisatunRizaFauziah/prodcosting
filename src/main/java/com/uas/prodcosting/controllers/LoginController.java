@@ -53,12 +53,19 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("/home2")
+    public String home2()
+        {
+            return "home";
+        }
+    
+
     @PostMapping("cek-login")
     public String cekLogin(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
         Login login = loginService.login(username, password);
         if (login != null) {
             model.addAttribute("login", login);
-            return "home";
+            return "redirect:/home2";
         } else {
             return "redirect:/login";
         }

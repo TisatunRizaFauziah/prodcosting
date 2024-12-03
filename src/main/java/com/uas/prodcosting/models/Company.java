@@ -1,5 +1,7 @@
 package com.uas.prodcosting.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,24 +17,19 @@ public class Company {
     private String description; 
     private String priode;
 
-    private Long biayaBahanBaku = 0L;
-    private Long biayaBahanPenolong = 0L;
-    private Long biayaTenagaKerja = 0L;
-    private Long bop = 0L;
-    private Long totalBiayaProduksi = 0L;
+    private Double biayaBahanBaku = 0.0;
+    private Double biayaBahanPenolong = 0.0;
+    private Double biayaTenagaKerja = 0.0;
+    private Double bop = 0.0;
+    private Double totalBiayaProduksi = 0.0;
 
-    private Integer produkJadi = 0;
-    private Integer produkDalamProses = 0;
-    private Integer persentaseBahanBaku = 0;
-    private Integer persentaseBahanPenolong = 0;
-    private Integer persentaseTenagaKerja = 0;
-    private Integer persentaseBop = 0;
+    private Double produkJadi ;
+    private Double produkDalamProses ;
+    private Double persentaseBahanBaku;
+    private Double persentaseBahanPenolong ;
+    private Double persentaseTenagaKerja ;
+    private Double persentaseBop ;
 
-    public Company() {
-    }
-
-    public Company(String name, String priode) {
-        this.name = name;
-        this.priode = priode;
-    }
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<JournalEntry> journalEntry;
 }

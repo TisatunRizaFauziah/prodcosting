@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harga Pokok Produk jadi dan BDP</title>
+    <title>Harga Pokok Produk Jadi dan BDP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -27,37 +27,37 @@
                             <!-- Bahan Baku -->
                             <tr>
                                 <td>Biaya Bahan Baku</td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaBahanBaku, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(bbb, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(tbbb, 2, 'COMMA', 2, 'POINT')}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaBahanBaku, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(bbb, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(tbbb, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
                             </tr>
                             <!-- Bahan Penolong -->
                             <tr>
                                 <td>Biaya Bahan Penolong</td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaBahanPenolong, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(bbp, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(tbbp, 2, 'COMMA', 2, 'POINT')}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaBahanPenolong, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(bbp, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(tbbp, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
                             </tr>
                             <!-- Tenaga Kerja -->
                             <tr>
                                 <td>Biaya Tenaga Kerja</td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaTenagaKerja, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(btk, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(tbtk, 2, 'COMMA', 2, 'POINT')}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(company.biayaTenagaKerja, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(btk, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(tbtk, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
                             </tr>
                             <!-- BOP -->
                             <tr>
                                 <td>BOP</td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(company.bop, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(bop, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(tbop, 2, 'COMMA', 2, 'POINT')}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(company.bop, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(bop, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(tbop, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
                             </tr>
                             <!-- Total -->
                             <tr class="table-light fw-bold">
                                 <td>Total</td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(totalBiaya, 2, 'COMMA', 2, 'POINT')}"></td>
-                                <td class="text-end" ></td>
-                                <td class="text-end" th:text="${#numbers.formatDecimal(totalBiayaPerUnit, 2, 'COMMA', 2, 'POINT')}"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(totalBiaya, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
+                                <td class="text-end"></td>
+                                <td class="text-end" th:text="${#numbers.formatDecimal(totalBiayaPerUnit, 2, 'COMMA', 2, 'POINT') ?: '0.00'}"></td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Jurnal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h2>Edit Jurnal</h2>
+        <form th:action="@{/journals/update/{id}(id=${journal.id})}" th:object="${journal}" method="post">
+            <div class="mb-3">
+                <label for="journalDate" class="form-label">Tanggal Jurnal</label>
+                <input type="date" id="journalDate" th:field="*{journalDate}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Deskripsi</label>
+                <textarea id="description" th:field="*{description}" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="/journals" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+</body>
+</html>

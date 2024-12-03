@@ -42,43 +42,43 @@
                 <th class="header">Produk Jadi</th>
                 <th class="text-end" th:text="${company.produkJadi}"></th>
                 <th class="text-start">Rp</th>
-                <th class="text-end" th:text="${tbProduksiPerunit}"></th>
+                <th class="text-end" th:text="${hppJadi_totalProduksiPerUnit}"></th>
                 <th class="text-start">Rp</th>
-                <th class="text-end" th:text="${tProdukJadi}"></th>
+                <th class="text-end" th:text="${hppJadi_totalProdukJadi}"></th>
             </tr>
             <tr>
                 <td class="highlight">BDP</td>
                 <td colspan="5"></td>
             </tr>
             <tr>
-                <td>Biaya Bahan Baku </td>
+                <td>Biaya Bahan Baku</td>
                 <td colspan="4" class="text-end">Rp</td>
-                <td class="text-end" th:text="${bbb}"></td>
+                <td class="text-end" th:text="${hppJadi_biayaBBB}"></td>
             </tr>
             <tr>
-                <td>B. Bahan Penolong </td>
+                <td>Biaya Bahan Penolong</td>
                 <td colspan="4" class="text-end">Rp</td>
-                <td class="text-end" th:text="${bbp}"></td>
+                <td class="text-end" th:text="${hppJadi_biayaBBP}"></td>
             </tr>
             <tr>
-                <td>B. Tenaga Kerja </td>
+                <td>Biaya Tenaga Kerja</td>
                 <td colspan="4" class="text-end">Rp</td>
-                <td class="text-end" th:text="${btk}"></td>
+                <td class="text-end" th:text="${hppJadi_biayaBTK}"></td>
             </tr>
             <tr>
-                <td>BOP </td>
+                <td>BOP</td>
                 <td colspan="4" class="text-end">Rp</td>
-                <td class="text-end" th:text="${bop}"></td>
+                <td class="text-end" th:text="${hppJadi_biayaBOP}"></td>
             </tr>
             <tr>
                 <td class="highlight">Barang Dalam Proses</td>
                 <td colspan="4"></td>
-                <td class="text-end border-bottom-only" th:text="${tBarangDalamProses}"></td>
+                <td class="text-end border-bottom-only" th:text="${hppJadi_totalBarangDalamProses}"></td>
             </tr>
             <tr>
                 <td colspan="4"></td>
                 <td class="highlight">Total Biaya Produksi Januari 2024</td>
-                <td class="text-end" th:text="${total}"></td>
+                <td class="text-end" th:text="${hppJadi_total}"></td>
             </tr>
         </table>
     </div>

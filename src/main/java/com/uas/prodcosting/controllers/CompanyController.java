@@ -55,12 +55,29 @@ public class CompanyController {
         model.addAttribute("company", company);
         return "update-companies";
     }
-
+    
     @GetMapping("/delete/{id}")
     public String deleteCompany(@PathVariable Long id) {
         companyService.deleteCompany(id);
         return "redirect:/companies";
     }
+      // Proses edit data
+      @PostMapping("/update")
+      public String updateCompany(@ModelAttribute Company company) {
+          System.out.println("Updating company with ID: " + company.getId());
+  
+          // Hitung ulang total biaya produksi
+          double totalBiaya = company.getBiayaBahanBaku()
+                  + company.getBiayaBahanPenolong()
+                  + company.getBiayaTenagaKerja()
+                  + company.getBop();
+          company.setTotalBiayaProduksi(totalBiaya);
+  
+          // Update data perusahaan
+          companyService.saveCompany(company);
+  
+          return "redirect:/companies";
+      }
 
    
 }
