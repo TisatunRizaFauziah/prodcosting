@@ -231,8 +231,8 @@ public class CompanyService {
             long roundedBiayaBOP = Math.round(biayaBOP);
             biayaBB = Math.round(totalBBB * 100.0) / 100.0;
             biayaBP = Math.round(totalBBP * 100.0) / 100.0;
-            biayaTK = Math.round(totalBTK * 100.0) / 100.0;
-            biayaOP = Math.round(totalBOP * 100.0) / 100.0;
+            biayaTK = Math.round(biayaTK * 100.0) / 100.0;
+            biayaOP = Math.round(biayaOP * 100.0) / 100.0;
             
             long roundedTotalBarangDalamProses = Math.round(totalBarangDalamProses);
             long roundedTotal = Math.round(totalProdukJadi + totalBarangDalamProses);

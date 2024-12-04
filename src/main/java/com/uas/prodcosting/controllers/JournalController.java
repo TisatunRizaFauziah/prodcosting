@@ -48,18 +48,12 @@ public class JournalController {
     // Menyimpan jurnal baru atau memperbarui jurnal
     @PostMapping("/save")
     public String saveJournal(@ModelAttribute Journal journal) {
-        if (journal.getId() == null) {
+        
             journalService.createJournal(journal.getCompany().getId(), 
                                          journal.getDebitAccount().getId(), 
                                          journal.getCreditAccount().getId(), 
                                          journal);
-        } else {
-            journalService.updateJournal(journal.getId(), 
-                                         journal.getCompany().getId(), 
-                                         journal.getDebitAccount().getId(), 
-                                         journal.getCreditAccount().getId(), 
-                                         journal);
-        }
+        
         
         return "redirect:/journals";
     }
@@ -69,19 +63,24 @@ public String updateJournal(@PathVariable Long id, Model model) {
       
 
     model.addAttribute("companies", companyService.getAllCompanies());
-    model.addAttribute("accounts", accountService.getAllAccounts());
+    model.addAttribute("account", accountService.getAllAccounts());
     model.addAttribute("journal", journal); 
     return "edit-journal";
 }
 
 @PostMapping("/update/{id}")
-public String saveUpdate(@PathVariable Long id, 
-                         @RequestParam("companyId") Long companyId, 
-                         @RequestParam("debitAccountId") Long debitAccountId, 
-                         @RequestParam("creditAccountId") Long creditAccountId, 
-                         @ModelAttribute("journal") Journal updatedJournal) {
+public String saveUpdate(@PathVariable Long id, @ModelAttribute("journal")Journal journal) {
 
-    journalService.updateJournal(id, companyId, debitAccountId, creditAccountId, updatedJournal);
+   Journal journals = journalService.getJournalById(id);
+   journals.setCompany(journal.getCompany());
+   journals.setTransactionDate(journal.getTransactionDate());
+   journals.setDescription(journal.getDescription());
+   journals.setDebitAccount(journal.getDebitAccount());
+   journals.setDebitAmount(journal.getDebitAmount());
+   journals.setCreditAccount(journal.getCreditAccount());
+   journals.setCreditAmount(journal.getCreditAmount());
+
+   journalService.saveJournal(journals);
     return "redirect:/journals";
 }
 

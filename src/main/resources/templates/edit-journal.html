@@ -117,7 +117,7 @@
 <body>
     <h1>Edit Journal</h1>
 
-    <form th:action="@{/update/{id}(id=${journal.id})}" method="post" th:object="${journal}">
+    <form th:action="@{/journals/update/{id}(id=${journal.id})}" method="post" th:object="${journal}">
         <div>
             <label for="company">Company:</label>
             <select id="company" name="companyId" th:field="*{company.id}" required>
@@ -129,8 +129,17 @@
             <label for="debitAccount">Debit Account:</label>
             <select id="debitAccount" name="debitAccountId" th:field="*{debitAccount.id}" required>
                 <option value="" disabled>Select Debit Account</option>
-                <option th:each="account : ${accounts}" th:value="${account.id}" th:text="${account.accountName}"></option>
+                <option th:each="account : ${account}" th:value="${account.id}" th:text="${account.accountName}"></option>
             </select>
+        </div>
+
+        <div>
+            <label for="transactionDate">Journal Date</label>
+            <input type="date" th:field="*{transactionDate}" required />
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" th:field="*{description}" required />
         </div>
         <div>
             <label for="debitAmount">Debit Amount:</label>
@@ -140,7 +149,7 @@
             <label for="creditAccount">Credit Account:</label>
             <select id="creditAccount" name="creditAccountId" th:field="*{creditAccount.id}" required>
                 <option value="" disabled>Select Credit Account</option>
-                <option th:each="account : ${accounts}" th:value="${account.id}" th:text="${account.accountName}"></option>
+                <option th:each="account : ${account}" th:value="${account.id}" th:text="${account.accountName}"></option>
             </select>
         </div>
         <div>

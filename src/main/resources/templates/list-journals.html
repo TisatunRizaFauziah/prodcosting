@@ -13,6 +13,8 @@
             <tr>
                 <th>ID</th>
                 <th>Company</th>
+                <th>Journal Date</th>
+                <th>Description</th>
                 <th>Debit Account</th>
                 <th>Debit Amount</th>
                 <th>Credit Account</th>
@@ -25,6 +27,8 @@
             <tr th:each="journal : ${journals}">
                 <td th:text="${journal.id}"></td>
                 <td th:text="${journal.company.name}"></td>
+                <td th:text="${journal.description}"></td>
+                <td th:text="${journal.transactionDate}"></td>
                 <td th:text="${journal.debitAccount.accountName}"></td>
                 <td th:text="${journal.debitAmount}"></td>
                 <td th:text="${journal.creditAccount.accountName}"></td>

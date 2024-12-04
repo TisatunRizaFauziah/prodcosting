@@ -18,6 +18,14 @@
                         th:text="${company.name}"></option>
             </select>
         </div>
+        <div>
+            <label for="transactionDate">Journal Date</label>
+            <input type="date" th:field="*{transactionDate}" required />
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" th:field="*{description}" required />
+        </div>
 
         <div>
             <label for="debitAccount">Debit Account:</label>

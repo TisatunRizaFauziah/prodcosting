@@ -51,31 +51,6 @@ public class JournalService {
         return journalRepository.findByCompanyId(companyId);
     }
 
-    // UPDATE
-    public Journal updateJournal(Long id, Long companyId, Long debitAccountId, Long creditAccountId, Journal updatedJournal) {
-        Journal journal = getJournalById(id); // Fetch existing journal
-    
-        // Fetch related entities
-        Company company = companyRepository.findById(companyId)
-                .orElseThrow(() -> new RuntimeException("Company not found"));
-        Account debitAccount = accountRepository.findById(debitAccountId)
-                .orElseThrow(() -> new RuntimeException("Debit Account not found"));
-        Account creditAccount = accountRepository.findById(creditAccountId)
-                .orElseThrow(() -> new RuntimeException("Credit Account not found"));
-    
-        // Update fields
-        journal.setCompany(company);
-        journal.setDebitAccount(debitAccount);
-        journal.setCreditAccount(creditAccount);
-        journal.setTransactionDate(updatedJournal.getTransactionDate());
-        journal.setDescription(updatedJournal.getDescription());
-        journal.setDebitAmount(updatedJournal.getDebitAmount());
-        journal.setCreditAmount(updatedJournal.getCreditAmount());
-    
-        return journalRepository.save(journal);
-    }
-    
-
     public void saveJournal(Journal journal) {
         journalRepository.save(journal);
     }

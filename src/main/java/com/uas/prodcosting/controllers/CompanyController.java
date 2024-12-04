@@ -22,6 +22,12 @@ public class CompanyController {
        model.addAttribute("companies", companies);
        return "list-companies";
    }
+   @GetMapping("/detail/{id}")
+public String getCompanyDetail(@PathVariable Long id, Model model) {
+    Company company = companyService.getCompanyById(id);
+    model.addAttribute("company", company);
+    return "detail-company";
+}
     @GetMapping("/ekuivalensi/{id}")
     public String ekuivalensi(@PathVariable Long id,Model model)
     {
