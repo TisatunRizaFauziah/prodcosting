@@ -1,22 +1,41 @@
 package com.uas.prodcosting.models;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.time.LocalDate;
 
-@Entity
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
 @Data
-@Table(name = "journals")
+@Entity
 public class Journal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "journal_date", nullable = false)
-    private LocalDate journalDate;
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
-    @Column(name = "description", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "debit_account_id", nullable = false)
+    private Account debitAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "credit_account_id", nullable = false)
+    private Account creditAccount;
+
+    private LocalDate transactionDate;
     private String description;
 
+    private Double debitAmount = 0.0;
+    private Double creditAmount = 0.0;
+    
+   
+
 }
+

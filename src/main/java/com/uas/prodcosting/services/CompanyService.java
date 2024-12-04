@@ -187,5 +187,79 @@ public class CompanyService {
     
         return "hppj-bdp";
     }
+
+    public String Laporan(Long id, Model model)
+    {
+        Company company = companyRepository.findById(id).orElse(null);
+
+        
+    
+        if (company != null) {
+            double persentaseBBB = company.getPersentaseBahanBaku() / 100.0;
+            double persentaseBBP = company.getPersentaseBahanPenolong() / 100.0;
+            double persentaseBTK = company.getPersentaseTenagaKerja() / 100.0;
+            double persentaseBOP = company.getPersentaseBop() / 100.0;
+    
+            double biayaBB = company.getProdukJadi() + (company.getProdukDalamProses() * persentaseBBB);
+            double biayaBP = company.getProdukJadi() + (company.getProdukDalamProses() * persentaseBBP);
+            double biayaTK = company.getProdukJadi() + (company.getProdukDalamProses() * persentaseBTK);
+            double biayaOP = company.getProdukJadi() + (company.getProdukDalamProses() * persentaseBOP);
+    
+            double totalPerUnit=biayaBB+biayaBP+biayaTK+biayaOP;
+
+            double totalBBB = company.getBiayaBahanBaku() / biayaBB;
+            double totalBBP = company.getBiayaBahanPenolong() / biayaBP;
+            double totalBTK = company.getBiayaTenagaKerja() / biayaTK;
+            double totalBOP = company.getBop() / biayaOP;
+    
+            double totalProduksiPerUnit = totalBBB + totalBBP + totalBTK + totalBOP;
+            double totalProdukJadi = company.getProdukJadi() * totalProduksiPerUnit;
+    
+            double biayaBBB = (persentaseBBB * company.getProdukDalamProses()) * totalBBB;
+            double biayaBBP = (persentaseBBP * company.getProdukDalamProses()) * totalBBP;
+            double biayaBTK = (persentaseBTK * company.getProdukDalamProses()) * totalBTK;
+            double biayaBOP = (persentaseBOP * company.getProdukDalamProses()) * totalBOP;
+    
+            double totalBarangDalamProses = biayaBBB + biayaBBP + biayaBTK + biayaBOP;
+    
+            // Membulatkan hasil perhitungan
+            long roundedTotalProduksiPerUnit = Math.round(totalProduksiPerUnit);
+            long roundedTotalProdukJadi = Math.round(totalProdukJadi);
+            long roundedBiayaBBB = Math.round(biayaBBB);
+            long roundedBiayaBBP = Math.round(biayaBBP);
+            long roundedBiayaBTK = Math.round(biayaBTK);
+            long roundedBiayaBOP = Math.round(biayaBOP);
+            biayaBB = Math.round(totalBBB * 100.0) / 100.0;
+            biayaBP = Math.round(totalBBP * 100.0) / 100.0;
+            biayaTK = Math.round(totalBTK * 100.0) / 100.0;
+            biayaOP = Math.round(totalBOP * 100.0) / 100.0;
+            
+            long roundedTotalBarangDalamProses = Math.round(totalBarangDalamProses);
+            long roundedTotal = Math.round(totalProdukJadi + totalBarangDalamProses);
+
+            long produkDimasukan =Math.round(company.getProdukDalamProses() + company.getProdukJadi());
+    
+            // Menambahkan ke model
+            model.addAttribute("company", company);
+            model.addAttribute("bbb", biayaBB);
+            model.addAttribute("bbp", biayaBB);
+            model.addAttribute("btk", biayaTK);
+            model.addAttribute("bop", biayaOP);
+            model.addAttribute("total", totalPerUnit);
+            model.addAttribute("produkDimasukan", produkDimasukan);
+            model.addAttribute("hppJadi_totalProduksiPerUnit", roundedTotalProduksiPerUnit);
+            model.addAttribute("hppJadi_totalProdukJadi", roundedTotalProdukJadi);
+            model.addAttribute("hppJadi_biayaBBB", roundedBiayaBBB);
+            model.addAttribute("hppJadi_biayaBBP", roundedBiayaBBP);
+            model.addAttribute("hppJadi_biayaBTK", roundedBiayaBTK);
+            model.addAttribute("hppJadi_biayaBOP", roundedBiayaBOP);
+            model.addAttribute("hppJadi_totalBarangDalamProses", roundedTotalBarangDalamProses);
+            model.addAttribute("hppJadi_total", roundedTotal);
+        } else {
+            model.addAttribute("error", "Company data not found.");
+        }
+    
+        return "laporan";
+    }
     
 }

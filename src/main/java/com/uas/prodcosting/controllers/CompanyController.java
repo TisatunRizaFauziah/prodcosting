@@ -37,6 +37,12 @@ public class CompanyController {
     {
         return companyService.hppJadi(id,model);
     }
+
+    @GetMapping("/laporan/{id}")
+    public String laporan(@PathVariable Long id,Model model)
+    {
+        return companyService.Laporan(id,model);
+    }
     @GetMapping("/add-companies")
     public String createForm(Model model) {
         model.addAttribute("company", new Company());

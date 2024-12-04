@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Biaya Produksi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h4, h5 {
+      margin: 10px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .right {
+      text-align: right;
+    }
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    <div class="header">
+        <h4> Laporan Biaya Produksi</h4>
+        <h5 th:text="${company.name}"></h5>
+        <h5 th:text=" ${company.priode}"></h5>
+    </div>
+
+  <div>
+    <h5>Data Produksi</h5>
+    <table>
+      <tr>
+        <td>Dimulai dalam proses</td>
+        <td class="right bold" th:text="${produkDimasukan}"></td>
+      </tr>
+      <tr>
+        <td>Produk Jadi Ditransfer ke Gudang</td>
+        <td class="right bold" th:text="${company.produkJadi}"></td>
+      </tr>
+      <tr>
+        <td>Produk Dalam Proses Akhir</td>
+        <td class="right bold" th:text="${company.produkDalamProses}"></td>
+      </tr>
+      <tr>
+        <td>Jumlah Yang Dihasilkan</td>
+        <td class="right bold" th:text="${produkDimasukan}"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <h5>Biaya yang Dibebankan dalam Bulan Januari 2024</h5>
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Total</th>
+        <th>Per Kg</th>
+      </tr>
+      <tr>
+        <td>Biaya Bahan Baku</td>
+        <td class="right"th:text="${company.biayaBahanBaku}"></td>
+        <td class="right"th:text="${bbb}"></td>
+      </tr>
+      <tr>
+        <td>Biaya Bahan Penolong</td>
+        <td class="right" th:text="${company.biayaBahanPenolong}"></td>
+        <td class="right" th:text="${bbp}"></td>
+      </tr>
+      <tr>
+        <td>Biaya Tenaga Kerja</td>
+        <td class="right" th:text="${company.biayaTenagaKerja}"></td>
+        <td class="right" th:text="${btk}"></td>
+      </tr>
+      <tr>
+        <td>BOP</td>
+        <td class="right" th:text="${company.bop}"></td>
+        <td class="right" th:text="${bop}"></td>
+      </tr>
+      <tr>
+        <th>Total</th>
+        <th class="right" th:text="${company.totalBiayaProduksi}"></th>
+        <th class="right" th:text="${hppJadi_totalBarangDalamProses}"></th>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <h5>Perhitungan Biaya</h5>
+    <table>
+      <tr>
+        <!-- <td>Harga Pokok Produk Ditransfer ke Gudang</td>
+        <td class="right" th:text="${company.produkJadi }" th:text="${hppJadi_totalBarangDalamProses}"></td>
+        <td class="right bold" th:text="${hppJadi_total}"></td> -->
+        <td>Harga Pokok Produk Ditransfer ke Gudang</td>
+<td class="right" th:text="${company.produkJadi +'kg' + '  x ' + '   Rp' + ' ' +hppJadi_totalBarangDalamProses}"></td>
+<td class="right bold" th:text="${hppJadi_totalProdukJadi}"></td>
+
+      </tr>
+      <tr>
+        <td>Harga Pokok Produk Dalam Proses Akhir</td>
+        <td class="right">
+          <ul>
+            <li class="text-lg font-semibold">
+                <span class="text-gray-700">Biaya Bahan Baku:</span> 
+                <span th:text="${company.persentaseBahanBaku}+'%'"></span> × 
+                <span th:text="${company.produkDalamProses}"></span> Kg × 
+                <span th:text="${'Rp '+bbb}"></span>kg =
+                <span th:text="${'Rp '+hppJadi_biayaBBB}"></span>
+            </li>
+            <li class="text-lg font-semibold">
+                <span class="text-gray-700">Biaya Bahan Penolong:</span> 
+                <span th:text="${company.persentaseBahanPenolong}+'%'"></span> × 
+                <span th:text="${company.produkDalamProses}"></span> Kg × 
+                <span th:text="${'Rp '+bbp}"></span>kg =
+                <span th:text="${'Rp '+hppJadi_biayaBBP}"></span>
+            </li>
+            <li class="text-lg font-semibold">
+                <span class="text-gray-700">Biaya Tenaga Kerja:</span> 
+                <span th:text="${company.persentaseTenagaKerja}+'%'"></span> × 
+                <span th:text="${company.produkDalamProses}"></span> Kg × 
+                <span th:text="${'Rp '+ btk}"></span>kg =
+                <span th:text="${'Rp '+hppJadi_biayaBTK}"></span>
+
+            </li>
+            <li class="text-lg font-semibold">
+                <span class="text-gray-700">Biaya Overhead Pabrik:</span> 
+                <span th:text="${company.persentaseBop}+'%'"></span> × 
+                <span th:text="${company.produkDalamProses}"></span> Kg × 
+                <span th:text="${'Rp '+ bop}"></span>kg =
+                <span th:text="${'Rp '+hppJadi_biayaBOP}"></span>
+            </li>
+          </ul>
+        </td>
+        <td class="right bold" th:text="${hppJadi_totalBarangDalamProses}"></td>
+      </tr>
+      <tr>
+        <th>Jumlah Biaya Produksi yang Dibebankan</th>
+        <th></th>
+        <th class="right bold" th:text="${hppJadi_total}"></th>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
+
+
+

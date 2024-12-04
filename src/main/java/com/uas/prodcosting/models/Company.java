@@ -1,5 +1,6 @@
 package com.uas.prodcosting.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -30,6 +31,7 @@ public class Company {
     private Double persentaseTenagaKerja ;
     private Double persentaseBop ;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<JournalEntry> journalEntry;
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Journal> journals = new ArrayList<>();
+
 }
