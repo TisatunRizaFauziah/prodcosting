@@ -1,0 +1,48 @@
+body {
+    background-image: url("https://jagoakuntansi.com/wp-content/uploads/2018/05/machine-learning-enables-automation-accouting-for-a-50-regarding-accounting-background-1-1080x675.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 600px;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.8
+    ); 
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .form-label {
+    font-weight: bold;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+  } 

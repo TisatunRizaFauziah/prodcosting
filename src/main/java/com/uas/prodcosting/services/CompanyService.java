@@ -261,5 +261,14 @@ public class CompanyService {
     
         return "laporan";
     }
+
+    public List<Company> findByName(String name)
+    {
+        return companyRepository.findByNameContainingIgnoreCase(name);
+    }
+    public List<Company> findByNameSort()
+    {
+        return companyRepository.findAllByOrderByNameAsc();
+    }
     
 }

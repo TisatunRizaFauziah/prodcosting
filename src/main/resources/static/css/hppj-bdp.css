@@ -1,0 +1,71 @@
+body {
+  background-image: url("https://jagoakuntansi.com/wp-content/uploads/2018/05/machine-learning-enables-automation-accouting-for-a-50-regarding-accounting-background-1-1080x675.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 0;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+.custom-table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border: black 1px;
+  background-color: #f2f9ff;
+}
+.custom-table th,
+.custom-table td {
+  padding: 8px 10px;
+  vertical-align: top;
+}
+.custom-table th {
+  text-align: left;
+}
+.custom-table td.text-end {
+  text-align: right;
+}
+.highlight {
+  background-color: #f2f9ff;
+  font-weight: bold;
+}
+.border-bottom-only {
+  border-bottom: 2px solid black;
+}
+.header {
+  font-weight: bold;
+  text-align: left;
+}
+p {
+  color: white;
+}

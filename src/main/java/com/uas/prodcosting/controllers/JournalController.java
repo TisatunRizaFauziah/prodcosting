@@ -32,8 +32,27 @@ public class JournalController {
         model.addAttribute("journals", journals);
         return "list-journals";
     }
+    
+    //   @GetMapping("/company/{id}")
+    // public String listJournalsByCompany(@PathVariable Long companyId, Model model) {
+    //     List<Journal> journals = journalService.getJournalsByCompanyId(companyId);
+    //     Company company = companyService.getCompanyById(companyId);
+    //     model.addAttribute("journals", journals);
+    //     model.addAttribute("company", company);
+    //     return "list-journals-by-company";
+    // }
 
-    // Menampilkan form untuk menambah jurnal
+    @GetMapping("/company/{companyId}")
+public String listJournalsByCompany(@PathVariable Long companyId, Model model) {
+    List<Journal> journals = journalService.getJournalsByCompanyId(companyId);
+    Company company = companyService.getCompanyById(companyId);
+    model.addAttribute("journals", journals);
+    model.addAttribute("company", company);
+    return "list-journals-by-company";
+}
+
+
+
     @GetMapping("/add")
     public String addJournalForm(Model model) {
         List<Company> companies = companyService.getAllCompanies();

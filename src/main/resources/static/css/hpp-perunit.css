@@ -1,0 +1,98 @@
+body {
+  background-image: url("https://jagoakuntansi.com/wp-content/uploads/2018/05/machine-learning-enables-automation-accouting-for-a-50-regarding-accounting-background-1-1080x675.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 60px;
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+  color: #000;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+.info-box {
+  margin: 20px;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: right;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.table-light {
+  background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+caption {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.text-end {
+  text-align: right;
+}
+h1 {
+    margin: 20px;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}

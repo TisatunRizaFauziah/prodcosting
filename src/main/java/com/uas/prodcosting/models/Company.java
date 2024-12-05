@@ -24,8 +24,8 @@ public class Company {
     private Double bop = 0.0;
     private Double totalBiayaProduksi = 0.0;
 
-    private Double produkJadi ;
-    private Double produkDalamProses ;
+    private long produkJadi ;
+    private long produkDalamProses ;
     private Double persentaseBahanBaku;
     private Double persentaseBahanPenolong ;
     private Double persentaseTenagaKerja ;

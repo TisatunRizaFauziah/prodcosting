@@ -1,6 +1,6 @@
 package com.uas.prodcosting.models;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +29,7 @@ public class Journal {
     @JoinColumn(name = "credit_account_id", nullable = false)
     private Account creditAccount;
 
-    private LocalDate transactionDate;
+    private Date transactionDate;
     private String description;
 
     private Double debitAmount = 0.0;

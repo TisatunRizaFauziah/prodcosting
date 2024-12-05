@@ -4,113 +4,20 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Laporan Biaya Produksi</title>
-   <style>
-     /* Set up A4 size for the report in portrait orientation */
-     @page {
-       size: A4 portrait;
-     }
- 
-     body {
-       font-family: Arial, sans-serif;
-       margin: 0;
-       padding: 0;
-       width: 100%;
-       height: 100%;
-       box-sizing: border-box;
-       font-size: 14px; /* Smaller font size */
-       
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       min-height: 100vh; /* Center content vertically */
-     }
- 
-     .content {
-       width: 100%; /* Control the width of the report */
-       max-width: 800px; /* Ensure it doesn't get too wide */
-       padding: 15px;
-     }
- 
-     .header {
-       text-align: center;
-       margin-bottom: 15px;
-     }
- 
-     h4, h5 {
-       margin: 5px 0;
-       font-size: 16px; /* Adjusted font size */
-     }
- 
-     table {
-       width: 100%;
-       border-collapse: collapse;
-       margin-top: 15px;
-       font-size: 12px;
-       justify-content: center;
-     }
- 
-     table, th, td {
-       border: 1px solid #ddd;
-     }
- 
-     th, td {
-       padding: 8px;
-       text-align: left;
-     }
- 
-     .right {
-       text-align: right;
-     }
- 
-     .bold {
-       font-weight: bold;
-     }
- 
-     .table-wrapper {
-       margin-top: 15px;
-     }
- 
-     .footer {
-       margin-top: 20px;
-       text-align: center;
-       font-size: 12px;
-     }
- 
-     /* Style for buttons */
-     .button-container {
-       text-align: center;
-       margin-top: 15px;
-     }
- 
-     button {
-       padding: 10px 20px;
-       margin: 5px;
-       background-color: #4CAF50;
-       color: white;
-       border: none;
-       border-radius: 5px;
-       cursor: pointer;
-     }
- 
-     button:hover {
-       background-color: #45a049;
-     }
- 
-     .export-btn {
-       background-color: #007bff;
-     }
- 
-     .export-btn:hover {
-       background-color: #0056b3;
-     }
-   </style>
+
+   <link th:href="@{/css/laporan.css}" rel="stylesheet" />
+   
  </head>
  <body>
+  <header class="d-flex justify-content-between align-items-center">
+    <a th:href="@{/detail/{id}(id=${company.id})}">Kembali</a>
+</header>
    <div class="content">
      <div class="header">
        <h4>Laporan Biaya Produksi</h4>
        <h5 th:text="${company.name}"></h5>
        <h5 th:text="${company.priode}"></h5>
+       <h6>(Dalam Rupiah)</h6>
      </div>
  
      <!-- Table for production data -->

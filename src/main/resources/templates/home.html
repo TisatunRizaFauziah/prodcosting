@@ -1,20 +1,19 @@
+
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProdCosting</title>
     
     <!-- My Own CSS -->
-    
-    <link th:href="@{/style/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
-      rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Font Awesome 5.15.4 -->
     <link
@@ -24,47 +23,46 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     >
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
+    <!-- Header -->
     <header class="navbar-container">
-      <div class="logo">
-        <img src="/src/main/resources/static/image/logo.png" alt="ProdCosting Logo" />
-      </div>
+     
       <nav class="nav-list">
         <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Fitur</a></li>
-          <li><a href="#">Tentang Kami</a></li>
-          <li><a href="#">Kontak</a></li>
+          <li><a href="/home">Beranda</a></li>
+          <li><a href="/companies">Company</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/login">LogOut</a></li>
         </ul>
       </nav>
     </header>
     
+    <!-- Main Content -->
     <main>
       <div class="content">
         <div class="content-description">
-          <h1 class="title">ProdCosting</h1>
-          <p>
-            ProdCosting adalah sistem yang membantu Anda menghitung biaya produksi secara akurat
-            menggunakan metode full costing. Dengan fitur-fitur kami, proses perhitungan menjadi
-            lebih mudah, efisien, dan tepat sasaran.
+          <h1 class="title" data-aos="fade-right">Selamat Datang di ProdCosting</h1>
+          <p data-aos="fade-right">
+            ProdCosting adalah solusi tepat untuk menghitung biaya produksi Anda. 
+            Kami menyediakan kemudahan, efisiensi, dan keakuratan untuk bisnis Anda.
           </p>
           <a href="/companies" class="btn btn-primary"><button>Mulai Menghitung</button></a>
         </div>
-        <div class="content-image">
+        <div class="content-image" data-aos="fade-left">
           <img src="https://cijferplus-administratie.nl/storage/app/media/KyErgtQ7m90WGmTPDrSbJ9XR9B0weQWSjNWAWmL0.png" alt="ProdCosting Illustration" />
         </div>
       </div>
-      <!-- <aside>
-        <div class="social-media">
-          <ul>
-            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-          </ul>
-        </div>
-      </aside> -->
     </main>
+  
+    
+    <!-- AOS Initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
