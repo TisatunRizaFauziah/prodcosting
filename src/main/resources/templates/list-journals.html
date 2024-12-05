@@ -35,7 +35,7 @@
                 <tr th:each="journal : ${journals}">
                     <td th:text="${journal.id}"></td>
                     <td th:text="${journal.company.name}"></td>
-                    <!-- <td th:text="${#dates.format(journal.transactionDate, 'yyyy-MM-dd')}"></td> -->
+                    <td th:text="${#dates.format(journal.transactionDate, 'yyyy-MM-dd')}"></td>
                     <td th:text="${journal.description}"></td>
                     <td th:text="${journal.debitAccount.accountName}"></td>
                     <td th:text="${journal.debitAmount}"></td>
